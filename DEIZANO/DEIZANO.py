@@ -30,8 +30,8 @@ while True:
     try:
         entrada = r.recognize_google(audio,language="pt-BR").lower()
         print("Você disse: " + entrada)
-        if '10 anos' in entrada:            
-            if 'ligar' in entrada:
+        if '10 anos' or 'dez anos' or 'Dez anos' in entrada:            
+            if ' ligar' in entrada:
                 mycursor.execute("SELECT nomeEquipamento FROM equipamento")
                 myresult = mycursor.fetchall()
                 for x in myresult:
@@ -40,12 +40,12 @@ while True:
                     x = x.lower()
                     #print(x)
                     if x in entrada:
-                        print(x, ' acesa') # comando NodeRED -> MQTT
+                        print(x, 'acesa') # comando NodeRED -> MQTT
                         flagMatch = True
                         break
                 if flagMatch != True:
                     print('Não sei onde é isso, Major')
-            elif 'desligar' in entrada:
+            elif ' desligar' in entrada:
                 mycursor.execute("SELECT nomeEquipamento FROM equipamento")
                 myresult = mycursor.fetchall()
                 for x in myresult:
@@ -54,12 +54,13 @@ while True:
                     x = x.lower()
                     #print(x)
                     if x in entrada:
-                        print(x, ' apagada') # comando NodeRED -> MQTT
+                        print(x, 'apagada') # comando NodeRED -> MQTT
                         flagMatch = True
                         break
                 if flagMatch != True:
                     print('Não sei onde é isso, Major')
             elif 'boa noite' in entrada:
+                time.sleep(1)
                 print('valeu, major')
             elif 'fazer anotação' in entrada:
                 print("Diga lá ...")
