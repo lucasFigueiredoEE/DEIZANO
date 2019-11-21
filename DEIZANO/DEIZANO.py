@@ -89,10 +89,13 @@ while True:
                     x = str(x)[+2:]
                     print(x)                               
             else:
-                print('Sei fazer isso não, Major')
+                time.sleep(1)
+                print('Sei fazer isso nao, Major')
         else:
+            time.sleep(1)
             print("Falou, Major?")
-    except:                                 # speech is unintelligible
+    except:      
+        time.sleep(1)# speech is unintelligible
         print("Deu ruim, Major")
 
     time.sleep(5)
